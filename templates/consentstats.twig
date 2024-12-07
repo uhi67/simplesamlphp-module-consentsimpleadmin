@@ -2,7 +2,9 @@
 {% extends "base.twig" %}
 
 {% block content %}
+    <h2>{{ 'Consent Storage Statistics'|trans }}</h2>
     <p>{{ stattotal }}</p>
     <p>{{ statusers }}</p>
     <p>{{ statservices }}</p>
+    <a href="{{ moduleURL('admin/') }}" class="pure-button pure-button-red">{{ 'Back'|trans }}</a>
 {% endblock %}

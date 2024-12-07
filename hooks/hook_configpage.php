@@ -9,16 +9,16 @@ use SimpleSAML\XHTML\Template;
 /**
  * Hook to add the consentSimpleAdmin module to the config page.
  *
- * @param \SimpleSAML\XHTML\Template &$template The template that we should alter in this hook.
+ * @param Template $template The template that we should alter in this hook.
  */
-function consentSimpleAdmin_hook_configpage(Template &$template): void
+function consentSimpleAdmin_hook_configpage(Template $template): void
 {
     $template->data['links'][] = [
         'href' => Module::getModuleURL('consentSimpleAdmin/admin'),
         'text' => Translate::noop('Consent withdrawal'),
     ];
     $template->data['links'][] = [
-        'href' => Module::getModuleURL('consentSimpleAdmin/consentStats.php'),
+        'href' => Module::getModuleURL('consentSimpleAdmin/stats'),
         'text' => Translate::noop('Consent Storage Statistics'),
     ];
     $template->getLocalization()->addModuleDomain('consentSimpleAdmin');

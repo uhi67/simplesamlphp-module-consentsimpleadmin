@@ -2,7 +2,7 @@
 {% extends "base.twig" %}
 
 {% block content %}
-
+    <h2>{{ 'Consent withdrawal'|trans }}</h2>
     {% if removed != -1 %}
         <p>{{ 'All consent have been withdrawn.'|trans }}</p>
         {% if backUrl != '' %}
