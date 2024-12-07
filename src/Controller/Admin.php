@@ -100,13 +100,14 @@ class Admin
         $hashed_user_id = Consent::getHashedUserID($userid, $source);
 
         // Check if button with withdraw all consent was clicked
+        $removed = '-1';
         if (array_key_exists('withdraw', $_REQUEST)) {
             Logger::info(sprintf(
                 'consentAdmin: UserID [%s] has requested to withdraw all consents given...',
                 $hashed_user_id,
             ));
-
-            $consent_storage->deleteAllConsents($hashed_user_id);
+            $removed = 0;
+            $removed = $consent_storage->deleteAllConsents($hashed_user_id);
         }
 
         // Get all consents for user
@@ -125,14 +126,11 @@ class Admin
 
         // Init template
         $t = new Template($this->config, 'consentSimpleAdmin:consentadmin.twig');
-        $translator = $t->getTranslator();
 
         $t->data['consentServices'] = count($consentServices);
         $t->data['consents'] = count($user_consent_list);
-        $t->data['granted'] = $translator->t('{consentSimpleAdmin:consentsimpleadmin:granted}', [
-            '%NO%' => strval($this->data['consents']),
-            '%OF%' => strval($this->data['consentServices']),
-        ]);
+        $t->data['backUrl'] = $consentconfig->hasValue('backUrl') ? $consentconfig->getValue('backUrl') : '';
+        $t->data['removed'] = $removed;
 
         return $t;
     }

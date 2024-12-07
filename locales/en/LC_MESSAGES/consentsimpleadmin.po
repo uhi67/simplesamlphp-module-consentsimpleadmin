@@ -45,3 +45,6 @@ msgstr "Consent is given to %NO% unique services."
 msgid "Consent storage contains %NO% entries."
 msgstr "Consent storage contains %NO% entries."
 
+msgid "All consent have been withdrawn."
+msgstr "All consent have been withdrawn."
+

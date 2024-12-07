@@ -2,17 +2,22 @@
 {% extends "base.twig" %}
 
 {% block content %}
-<p>
-    <p>{{ granted }}</p>
-    <p>{{ 'If you withdraw all consents given, you will be asked again each time you visit a new service, whether or not you would like to accept that a given set of personal information are transferred.'|trans }}</p>
-</p>
 
-<!-- <p>You have granted {{ consents }} consents to {{ consentServices }} different services.</p>
-<p>If you withdraw all consents given, you will be asked again each time you visit a new service, whether or not you would like to accept that a given set of attributes are transferred.</p> -->
+    {% if removed != -1 %}
+        <p>{{ 'All consent have been withdrawn.'|trans }}</p>
+        {% if backUrl != '' %}
+            <button type="button"><a href="{{ backUrl }}" class="button">{{ 'Back'|trans }}</a></button>
+        {% endif %}
+    {% else %}
+        <p>{{ 'You have earlier granted %NO% consents to %OF% different services.'|trans({'%NO%': consents, '%OF%': consentServices}) }}</p>
+        <p>{{ 'If you withdraw all consents given, you will be asked again each time you visit a new service, whether or not you would like to accept that a given set of personal information are transferred.'|trans }}</p>
 
-<form method="get" action="{{ moduleURL('consentSimpleAdmin/admin') }}">
-    <input type="submit" name="withdraw" value="{{ 'Withdraw all consent given'|trans }}" />
-</form>
-<!--  Withdraw all consent given -->
+        <form method="get" action="{{ moduleURL('consentSimpleAdmin/admin') }}">
+            <button type="submit" name="withdraw" value="OK">{{ 'Withdraw all consent given'|trans }}</button>
+            {% if backUrl != '' %}
+                <button type="button"><a href="{{ backUrl }}" class="button">{{ 'Back'|trans }}</a></button>
+            {% endif %}
+        </form>
+    {% endif %}
 
 {% endblock %}

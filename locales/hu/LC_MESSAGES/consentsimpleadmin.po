@@ -45,3 +45,5 @@ msgstr "%NO% különböző szolgáltatáshoz adtak hozzájárulást."
 msgid "Consent storage contains %NO% entries."
 msgstr "A hozzájárulás tároló %NO% bejegyzést tartalmaz."
 
+msgid "All consent have been withdrawn."
+msgstr "Az összes hozzájárulás visszavonásra került."

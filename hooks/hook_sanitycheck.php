@@ -2,12 +2,9 @@
 
 declare(strict_types=1);
 
-use Exception;
 use SimpleSAML\Assert\Assert;
 use SimpleSAML\Configuration;
 use SimpleSAML\Module\consent\Store;
-
-use function is_callable;
 
 /**
  * @param array &$hookinfo  hookinfo
