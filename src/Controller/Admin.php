@@ -70,10 +70,11 @@ class Admin
         $userid_attributename = $consentconfig->getOptionalValue('userid', 'eduPersonPrincipalName');
 
         if (empty($attributes[$userid_attributename])) {
-            throw new Exception(sprintf(
-                'Could not generate useridentifier for storing consent. Attribute [%s] was not available.',
-                $userid_attributename,
-            ));
+            Logger::notice("ConsentAdmin: Missing '" . $userid_attributename . "' in user's attributes.");
+            $t = new Template($this->config, 'consentSimpleAdmin:consentadminerror.twig');
+            $t->data['backUrl'] = $consentconfig->hasValue('backUrl') ? $consentconfig->getValue('backUrl') : '';
+            $t->data['userIdAttribute'] = $userid_attributename;
+            return $t;
         }
 
         $userid = $attributes[$userid_attributename][0];

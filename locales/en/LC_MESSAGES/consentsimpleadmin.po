@@ -48,3 +48,5 @@ msgstr "Consent storage contains %NO% entries."
 msgid "All consent have been withdrawn."
 msgstr "All consent have been withdrawn."
 
+msgid "User ID attribute '%a%' is not available. Could not access the consent storage."
+msgstr "User ID attribute '%a%' is not available. Could not access the consent storage."

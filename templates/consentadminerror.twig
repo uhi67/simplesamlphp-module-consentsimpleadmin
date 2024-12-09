@@ -1,0 +1,10 @@
+{% set pagetitle = 'Consent withdrawal'|trans %}
+{% extends "base.twig" %}
+
+{% block content %}
+    <h2>{{ 'Consent withdrawal'|trans }}</h2>
+    <p>{{ "User ID attribute '%a%' is not available. Could not access the consent storage."|trans({'%a%':userIdAttribute}) }}</p>
+    {% if backUrl != '' %}
+        <button type="button"><a href="{{ backUrl }}" class="button">{{ 'Back'|trans }}</a></button>
+    {% endif %}
+{% endblock %}
